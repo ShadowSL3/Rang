@@ -3,7 +3,6 @@ extends RigidBody3D
 
 # Bone is Array 
 var bones = []
-
 func _ready():
     setup_bones()
 
@@ -21,7 +20,6 @@ func create_bone(name, position):
      bome.transform.origin = position 
      add_child(bone)
      return bone
-
 func activate_ragdoll():
      for bone in bones:
          bone.mode = RigidBody3D.MODE_RIGID
