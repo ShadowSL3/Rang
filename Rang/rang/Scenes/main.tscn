@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjeoexv3oien3"]
+
+[ext_resource type="Script" path="res://script/bodyer.gd" id="1_k73do"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kts2t"]
+
+[node name="Main" type="Node3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("BoxShape3D_kts2t")
+
+[node name="Bodyer" type="Node3D" parent="RigidBody3D"]
+script = ExtResource("1_k73do")
