@@ -1,15 +1,57 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjeoexv3oien3"]
+[gd_scene load_steps=11 format=3 uid="uid://bjeoexv3oien3"]
 
+[ext_resource type="Script" path="res://Scenes/main.gd" id="1_bopci"]
+[ext_resource type="Script" path="res://script/ragdolls.gd" id="1_cw4jd"]
 [ext_resource type="Script" path="res://script/bodyer.gd" id="1_k73do"]
+[ext_resource type="PackedScene" uid="uid://cgv8bmssq802r" path="res://Scenes/debug.tscn" id="4_b0x1a"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kts2t"]
+size = Vector3(0.5, 2.5, 1)
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_gtv57"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1lvce"]
+size = Vector3(3.18945, 0.202148, 2.20834)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ajplp"]
+
+[sub_resource type="Sky" id="Sky_yg0eh"]
+sky_material = SubResource("ProceduralSkyMaterial_ajplp")
+
+[sub_resource type="Environment" id="Environment_t2wjv"]
+background_mode = 2
+sky = SubResource("Sky_yg0eh")
 
 [node name="Main" type="Node3D"]
+script = ExtResource("1_bopci")
 
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23629, 1.42588, 0.636085)
+script = ExtResource("1_cw4jd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.846397, 0.257576, 0.0170561)
 shape = SubResource("BoxShape3D_kts2t")
 
 [node name="Bodyer" type="Node3D" parent="RigidBody3D"]
 script = ExtResource("1_k73do")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.992889, 0, -0.119045, 0, 1, 0, 0.119045, 0, 0.992889, 0, 0.651747, 2.40622)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05016, 0, 0.807068)
+size = Vector3(2.30032, 0.2, 2.61414)
+material = SubResource("ORMMaterial3D_gtv57")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22858, 0.261695, 0.510117)
+shape = SubResource("BoxShape3D_1lvce")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t2wjv")
+
+[node name="Debug" parent="." instance=ExtResource("4_b0x1a")]
+visible = false
