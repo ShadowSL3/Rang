@@ -19,7 +19,3 @@ Rang Use For Bones 3D and More powerful Your Project
 
 # If My Project Use 4.2 Is Compatible? 
 Yes Rang Is Compatible for all version, But If Not Working Correctly Send Your pull Request and Review.
-=======
-
-
->>>>>>> d3b074fff94ac2761d6b80ee91fb199e4b48b2b7
